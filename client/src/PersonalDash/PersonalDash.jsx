@@ -7,7 +7,7 @@ import Footer from './components/Footer'
 require('./sass/style.scss')
 
 const PersonalDash = () => (
-  <Container>
+  <Container fluid>
     <SnowReport />
     <Footer />
   </Container>

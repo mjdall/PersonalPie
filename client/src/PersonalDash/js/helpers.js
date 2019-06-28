@@ -6,6 +6,7 @@ module.exports = {
       Sunny: '#FDE74C',
       'Partly Cloudy': '#C1BFB5',
       Rain: '#8EB1C7',
+      'Light snow': '#C4F9FF',
     }
     // return valid forecast or solid red
     // solid red for debug atm

@@ -9,7 +9,7 @@ const WHAKAPAPA = 'whakapapa'
 const DEFAULT_STYLE = {
   backgroundColor: '#474747',
   width: '100%',
-  height: '100%',
+  height: '25vh',
   textAlign: 'center',
 }
 
@@ -24,8 +24,12 @@ const renderForecastCell = (skifield, day, weather) => {
   }
 
   return (
-    <Col md={{ size: 2 }} key={`forecast-cell-${skifield}-${day}`}>
-      <p style={cellStyle}>{day}</p>
+    <Col
+      style={cellStyle}
+      md={{ size: 2 }}
+      key={`forecast-cell-${skifield}-${day}`}
+    >
+      <p>{day}</p>
     </Col>
   )
 }
@@ -48,9 +52,9 @@ const renderForecastRow = (skifield, skifieldForecasts) => {
 
   return (
     <>
-      <h3>{skifield}</h3>
-      <Row>
+      <Row align="stretch">
         {cells.map(cell => cell)}
+        <h3 style={{ position: 'relative' }}>{skifield}</h3>
       </Row>
     </>
   )
