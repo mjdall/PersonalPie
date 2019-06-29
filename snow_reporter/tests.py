@@ -16,7 +16,10 @@ def test_weather_scrape():
     in a fashion that can easily change by an update to their
     site. This just makes sure we know when that happens.
     """
-    known_weather = {'Bluebird', 'Sunny', 'Light snow', 'Partly Cloudy', 'Rain'}
+    known_weather = {
+        'Bluebird', 'Sunny', 'Light snow', 'Partly Cloudy', 'Rain',
+        'Cloudy (no visibility)'
+    }
     turoa_url = 'https://www.mtruapehu.com/turoa/report'
     whakapapa_url = 'https://www.mtruapehu.com/whakapapa/report'
 
