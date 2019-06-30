@@ -2,19 +2,26 @@ version: '3.7'
 services:
   snow_reporter:
     build: ./snow_reporter
-    # networks:
-    #   - main_app
+    expose:
+      - 5000
     ports:
-      - "5000:5000"
+      - 5000:5000
+    networks:
+      - main_app
 
   web_app:
     build: ./client
+    expose:
+      - 3000
     ports:
-      - "3000:3000"
+      - 3000:3000
     depends_on:
       - snow_reporter
-    # networks:
-    #   - main_app
+    links:
+      - snow_reporter
+    networks:
+      - main_app
+
 
 networks:
   main_app:

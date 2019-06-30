@@ -14,11 +14,9 @@ RUN pip install -r requirements.txt
 
 ENV FLASK_APP snow_report.py
 ENV FLASK_ENV production
-# ENV FLASK_RUN_HOST 0.0.0.0
+ENV FLASK_RUN_HOST 0.0.0.0
 
 COPY ./snow_report.py .
 COPY ./weather_fetching ./weather_fetching
-
-EXPOSE 5000
 
 CMD ["flask", "run"]
