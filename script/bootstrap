@@ -1,0 +1,35 @@
+#!/bin/sh
+
+DOCKER_COMPOSE_VERSION="1.23.1"
+
+install_docker() {
+    sudo apt-get update \
+        || echo "run with sudo, need to install apt packages" \
+        && exit 1
+
+    # incase any current installations exist
+    sudo apt-get remove docker docker-engine docker.io
+
+    sudo apt install -y --no-install-recommends docker.io
+
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+
+    sudo systemctl start docker
+    sudo systemctl enable docker
+
+    echo "logout and back in to use docker without sudo"
+}
+
+install_docker_compose() {
+  sudo rm /usr/local/bin/docker-compose || true
+
+  sudo curl -L "https://github.com/docker/compose/releases/download/"$DOCKER_COMPOSE_VERSION"/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+  sudo chmod +x /usr/local/bin/docker-compose
+
+  docker-compose --version
+}
+
+install_docker
+install_docker_compose
