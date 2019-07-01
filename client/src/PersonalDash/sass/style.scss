@@ -9,3 +9,26 @@ a.maintainer-link {
 h6.maintainer-link {
   color: #65CEB9 !important;
 }
+
+.center-contents {
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+}
+
+.upper-block {
+  background-color: #3E92CC;
+  height: 50vh;
+}
+
+.lower-block {
+  background-color: #D8315B;
+  height: 50vh;
+}
+
+h2.header-text {
+  text-transform: none;
+  color: #FFFFFF;
+  align-self: center;
+  font-size: 3vw;
+}

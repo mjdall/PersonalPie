@@ -18,7 +18,7 @@ def test_weather_scrape():
     """
     known_weather = {
         'Bluebird', 'Sunny', 'Light snow', 'Partly Cloudy', 'Rain',
-        'Cloudy (no visibility)'
+        'Cloudy (no visibility)', 'Snow and rain'
     }
     turoa_url = 'https://www.mtruapehu.com/turoa/report'
     whakapapa_url = 'https://www.mtruapehu.com/whakapapa/report'

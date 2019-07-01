@@ -8,8 +8,7 @@ const WHAKAPAPA = 'whakapapa'
 
 const DEFAULT_STYLE = {
   backgroundColor: '#474747',
-  width: '100%',
-  height: '25vh',
+  height: '20vh',
   textAlign: 'center',
 }
 
@@ -24,17 +23,17 @@ const renderForecastCell = (skifield, day, weather) => {
   }
 
   return (
-    <Col
+    <Row
       style={cellStyle}
       md={{ size: 2 }}
       key={`forecast-cell-${skifield}-${day}`}
     >
-      <p>{day}</p>
-    </Col>
+      {typeof day === 'string' && <h4 style={{ color: '#FFF' }}>{day}</h4>}
+    </Row>
   )
 }
 
-const renderForecastRow = (skifield, skifieldForecasts) => {
+const renderForecastCol = (skifield, skifieldForecasts, dayText) => {
   let cells = []
   for (let i = 0; i < 5; i++) {
     let day, weather
@@ -42,20 +41,18 @@ const renderForecastRow = (skifield, skifieldForecasts) => {
     // if we have a forecast for this day
     if (Array.isArray(skifieldForecasts) && skifieldForecasts.length - 1 >= i) {
       const forecast = skifieldForecasts[i]
-      day = forecast.day
+      day = dayText ? forecast.day : i
       weather = forecast.weather
     } else {
-      day = GetDateWithOffset(i)
+      day = dayText ? GetDateWithOffset(i) : i
     }
+
     cells.push(renderForecastCell(skifield, day, weather))
   }
 
   return (
     <>
-      <Row align="stretch">
-        {cells.map(cell => cell)}
-        <h3 style={{ position: 'relative' }}>{skifield}</h3>
-      </Row>
+      <Col md={{ size: 6 }}>{cells.map(cell => cell)}</Col>
     </>
   )
 }
@@ -81,10 +78,10 @@ const SnowReport = () => {
   }
 
   return (
-    <>
-      {renderForecastRow(TUROA, turoaReports)}
-      {renderForecastRow(WHAKAPAPA, whakapapaReports)}
-    </>
+    <Row>
+      {renderForecastCol(TUROA, turoaReports, true)}
+      {renderForecastCol(WHAKAPAPA, whakapapaReports, false)}
+    </Row>
   )
 }
 
